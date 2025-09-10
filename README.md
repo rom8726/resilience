@@ -87,7 +87,7 @@ err := resilience.WithRetry(func() error {
 err := resilience.WithRetryContext(ctx, func(ctx context.Context) error {
     // Your code here
     return nil
-}, resilience.KafkaRetryOptions()...)
+}, resilience.DefaultRetryOptions()...)
 ```
 
 ### Combined Circuit Breaker and Retry
@@ -101,7 +101,7 @@ err := resilience.WithCircuitBreakerAndRetry(
         // Your code here
         return nil
     },
-    resilience.KafkaRetryOptions()...,
+    resilience.DefaultRetryOptions()...,
 )
 
 // Execute a function with circuit breaker, retry, and fallback
@@ -116,7 +116,7 @@ err := resilience.WithCircuitBreakerAndRetryWithFallback(
         // Fallback code here
         return nil
     },
-    resilience.KafkaRetryOptions()...,
+    resilience.DefaultRetryOptions()...,
 )
 ```
 
