@@ -9,6 +9,29 @@ This package provides circuit breaker and retry functionality for external servi
 - Metrics for monitoring circuit breaker and retry operations
 - **Thread-safe implementation** with proper read/write lock separation
 
+## PlantUML scheme
+
+```plantuml
+@startuml
+[*] --> Closed
+
+Closed : normal mode
+Closed --> Open : if errors >= MinRequests\nand FailureRatio >= ErrorThreshold
+Closed --> Closed : successful request
+
+Open : requests blocked
+Open --> HalfOpen : after OpenTimeout
+Open --> Open : before OpenTimeout
+
+HalfOpen : limited number of requests
+HalfOpen --> Closed : HalfOpenSuccesses >= HalfOpenSuccessThreshold
+HalfOpen --> Open : on error
+HalfOpen --> HalfOpen : on success (< threshold)\nand not exceeded MaxHalfOpenRequests
+HalfOpen --> [*] : if too many requests (ErrTooManyRequests)
+
+@enduml
+```
+
 ## Thread Safety
 
 The circuit breaker implementation is fully thread-safe and handles race conditions properly:
