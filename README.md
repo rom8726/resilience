@@ -159,8 +159,8 @@ The package provides factory methods for creating pre-configured retry options:
 
 The package provides Prometheus metrics for monitoring circuit breaker and retry operations:
 
-- `warden_circuit_breaker_state`: Current state of the circuit breaker (0 - Closed, 1 - Open, 2 - HalfOpen)
-- `warden_circuit_breaker_failures_total`: Total number of circuit breaker failures
-- `warden_circuit_breaker_successes_total`: Total number of circuit breaker successes
-- `warden_circuit_breaker_timeouts_total`: Total number of circuit breaker timeouts
-- `warden_retry_attempts_total`: Total number of retry attempts
+- `resilience_circuit_breaker_state`: Current state of the circuit breaker (0 - Closed, 1 - Open, 2 - HalfOpen)
+- `resilience_circuit_breaker_failures_total`: Total number of circuit breaker failures
+- `resilience_circuit_breaker_successes_total`: Total number of circuit breaker successes
+- `resilience_circuit_breaker_timeouts_total`: Total number of circuit breaker timeouts
+- `resilience_retry_attempts_total`: Total number of retry attempts

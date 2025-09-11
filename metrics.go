@@ -9,7 +9,7 @@ var (
 	// CircuitBreakerState tracks the current state of circuit breakers.
 	CircuitBreakerState = promauto.NewGaugeVec(
 		prometheus.GaugeOpts{
-			Name: "warden_circuit_breaker_state",
+			Name: "resilience_circuit_breaker_state",
 			Help: "Current state of the circuit breaker (0 - Closed, 1 - Open, 2 - HalfOpen)",
 		},
 		[]string{"name"},
@@ -18,7 +18,7 @@ var (
 	// CircuitBreakerFailures tracks the total number of failures.
 	CircuitBreakerFailures = promauto.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "warden_circuit_breaker_failures_total",
+			Name: "resilience_circuit_breaker_failures_total",
 			Help: "Total number of circuit breaker failures",
 		},
 		[]string{"name"},
@@ -27,7 +27,7 @@ var (
 	// CircuitBreakerSuccesses tracks the total number of successes.
 	CircuitBreakerSuccesses = promauto.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "warden_circuit_breaker_successes_total",
+			Name: "resilience_circuit_breaker_successes_total",
 			Help: "Total number of circuit breaker successes",
 		},
 		[]string{"name"},
@@ -36,7 +36,7 @@ var (
 	// CircuitBreakerTimeouts tracks the total number of timeouts.
 	CircuitBreakerTimeouts = promauto.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "warden_circuit_breaker_timeouts_total",
+			Name: "resilience_circuit_breaker_timeouts_total",
 			Help: "Total number of circuit breaker timeouts",
 		},
 		[]string{"name"},
@@ -45,7 +45,7 @@ var (
 	// RetryAttempts tracks the total number of retry attempts.
 	RetryAttempts = promauto.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "warden_retry_attempts_total",
+			Name: "resilience_retry_attempts_total",
 			Help: "Total number of retry attempts",
 		},
 		[]string{"operation"},
